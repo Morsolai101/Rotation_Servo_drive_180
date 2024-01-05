@@ -1,16 +1,16 @@
 #include <Servo.h>
 Servo myServo;
-int buttonPin = 2; // Пін, на якому знаходиться кнопка
-int buttonState;   // Змінна для збереження стану кнопки
-int lastButtonState = LOW; // Змінна для збереження попереднього стану кнопки
-long lastDebounceTime = 0; // Час для антидребізгу кнопки
-long debounceDelay = 50;   // Інтервал для антидребізгу кнопки
-int servoPosition = 0; // Початкове положення сервомотора
+int buttonPin = 2; // The pin on which the button is located
+int buttonState;   // A variable to save the state of the button
+int lastButtonState = LOW; // A variable to save the previous state of the button
+long lastDebounceTime = 0; // Time for an anti-rattle button
+long debounceDelay = 50;   // Spacing for anti-rattle buttons
+int servoPosition = 0; // Starting position of the servo motor
 
 void setup() {
-  myServo.attach(9); // Пін, на якому підключений сервомотор
+  myServo.attach(9); // The pin on which the servo motor is connected
   pinMode(buttonPin, INPUT);
-  myServo.write(servoPosition); // Встановлення початкового положення сервомотора
+  myServo.write(servoPosition); // Setting the starting position of the servo motor
 }
 
 void loop() {
@@ -25,10 +25,10 @@ void loop() {
       buttonState = reading;
 
       if (buttonState == HIGH) {
-        // Якщо кнопка натиснута, повернути сервомотор на 180 градусів
+        // If the button is pressed, rotate the servo motor 180 degrees
         myServo.write(180);
       } else {
-        // Якщо кнопка не натиснута, повернути сервомотор на початкове положення (0 градусів)
+        // If the button is not pressed, return the servo motor to its initial position (0 degrees)
         myServo.write(servoPosition);
       }
     }
